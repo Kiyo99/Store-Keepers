@@ -29,7 +29,7 @@ public class Login extends AppCompatActivity {
 
     EditText email, password;
     Button login;
-    TextView txt_signup, txt_forgot;
+    TextView txt_forgot;
 
     private FirebaseAuth auth;
 
@@ -99,19 +99,12 @@ public class Login extends AppCompatActivity {
 
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
-        txt_signup = findViewById(R.id.txt_signup);
         txt_forgot = findViewById(R.id.forgot);
         login = findViewById(R.id.login);
 
         auth = FirebaseAuth.getInstance();
 
         txt_forgot.setVisibility(View.GONE);
-
-        txt_signup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Login.this, Register.class));
-            }});
 
 
 

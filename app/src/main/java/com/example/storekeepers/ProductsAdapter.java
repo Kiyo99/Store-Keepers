@@ -17,11 +17,12 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.MyViewHolder> {
+public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.MyViewHolder>{
 
     Context context;
     ArrayList <Products> productsArrayList;
     SelectListener selectListener;
+
 
     public ProductsAdapter(Context context, ArrayList<Products> productsArrayList, SelectListener selectListener) {
         this.context = context;
@@ -52,6 +53,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.MyView
             @Override
             public void onClick(View view) {
                 selectListener.onItemClicked(productsArrayList.get(position));
+//                String documentId = getSnapshots().getSnapshot(position).getId();
             }
         });
 

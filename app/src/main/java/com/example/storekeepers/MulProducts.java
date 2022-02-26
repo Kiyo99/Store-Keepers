@@ -56,6 +56,7 @@ public class MulProducts extends AppCompatActivity {
     String userid = firebaseUser.getUid();
     DocumentReference docRef = db.collection("Users").document(userid);
     final String randomKey = UUID.randomUUID().toString();
+    Boolean decision;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -137,11 +138,16 @@ public class MulProducts extends AppCompatActivity {
 
                         Log.d(TAG, "DocumentSnapshot data: " + document.getData());
 
+
+
                         //Entering a loop to add multiple products
                         for (int i = 0; i < number; i++){
                             //Getting a random price within the range given by the user
                             final int randomPrice = new Random().nextInt((max - min) + 1) + min;
                             String str_pPrice = String.valueOf(randomPrice);
+
+                            //Getting random ID
+                            final String documentID = UUID.randomUUID().toString();
 
                             //Getting random names to apend to the name given by the user
                             final String randomName = UUID.randomUUID().toString().substring(0,6);
@@ -154,22 +160,32 @@ public class MulProducts extends AppCompatActivity {
                             product.put("productDetail", str_pDetail);
                             product.put("productImage", downloadUri);
                             product.put("productStatus", productStatus);
+                            product.put("documentID", documentID);
 
-                            db.collection("Products").add(product).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
-                                @Override
-                                public void onComplete(@NonNull @NotNull Task<DocumentReference> task) {
-                                    pd.dismiss();
-                                    Toast.makeText(MulProducts.this, "Successfully uploaded your product", Toast.LENGTH_SHORT).show();
-                                    finish();
-                                }
-                            }).addOnFailureListener(new OnFailureListener() {
+                            db.collection("Products").document(documentID)
+                                    .set(product)
+                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+                                            decision = true;
+                                        }
+                                    }).addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
-                                    pd.dismiss();
-                                    Toast.makeText(MulProducts.this, "Error uploading your product", Toast.LENGTH_SHORT).show();
+                                    decision = false;
+
                                 }
                             });
 
+                        }
+
+                        if (decision = true){
+                            Toast.makeText(MulProducts.this, "Successfully uploaded your products", Toast.LENGTH_SHORT).show();
+                            finish();
+                        }
+                        else {
+                            pd.dismiss();
+                            Toast.makeText(MulProducts.this, "Error uploading your product", Toast.LENGTH_SHORT).show();
                         }
                     }}
 

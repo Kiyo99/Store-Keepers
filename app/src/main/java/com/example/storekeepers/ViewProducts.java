@@ -44,6 +44,12 @@ public class ViewProducts extends AppCompatActivity implements AdapterView.OnIte
     String usertype;
 //    String problemType;
 
+@Override
+public void onBackPressed() {
+    Intent i = new Intent(ViewProducts.this, ProductDestination.class);
+    startActivity(i);
+}
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -170,7 +176,9 @@ public class ViewProducts extends AppCompatActivity implements AdapterView.OnIte
         intent.putExtra("desc", products.getProductDesc());
         intent.putExtra("status", products.getProductStatus());
         intent.putExtra("usertype", usertype);
+        intent.putExtra("documentID", products.getDocumentID());
 
         startActivity(intent);
+        finish();
     }
 }

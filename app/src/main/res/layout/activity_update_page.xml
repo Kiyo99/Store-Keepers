@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddProducts"
-    android:id="@+id/content2">
+    tools:context=".UpdatePage"
+    android:id="@+id/content5">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -25,7 +25,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Click on the image below to upload an image"
+                android:text="Click on the image below to update it"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:textColor="@color/black"
@@ -49,7 +49,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:background="@drawable/edittext_background"
-                    android:hint="Name"
+                    android:hint="Product's name"
                     android:inputType="text"
                     android:maxLength="50"
                     android:padding="10dp"
@@ -69,7 +69,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:background="@drawable/edittext_background"
-                    android:hint="Brief description of the Products"
+                    android:hint="Brief description of the Product"
                     android:inputType="text"
                     android:maxLength="50"
                     android:padding="10dp"
@@ -89,7 +89,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:background="@drawable/edittext_background"
-                    android:hint="Detailed description of the products"
+                    android:hint="Detailed description of the product"
                     android:inputType="textMultiLine"
                     android:gravity="top|left"
                     android:minLines="3"
@@ -122,48 +122,12 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/productPriceMin"
+                    android:id="@+id/productPrice"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
                     android:background="@drawable/edittext_background"
-                    android:hint="Minimum price"
-                    android:inputType="number"
-                    android:padding="10dp"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/black" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/productPriceMax"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:background="@drawable/edittext_background"
-                    android:hint="Maximum price"
-                    android:inputType="number"
-                    android:padding="10dp"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/black" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/num"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:background="@drawable/edittext_background"
-                    android:hint="Number of products to be created"
+                    android:hint="Price"
                     android:inputType="number"
                     android:padding="10dp"
                     android:textColor="@color/black"
@@ -173,14 +137,14 @@
 
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/upload"
+                android:id="@+id/update"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="30dp"
                 android:background="@drawable/yellow_oval"
                 android:backgroundTint="@color/blue"
-                android:text="Upload"
+                android:text="Update"
                 android:textColor="@color/white" />
 
         </LinearLayout>

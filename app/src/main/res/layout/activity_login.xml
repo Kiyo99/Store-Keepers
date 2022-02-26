@@ -61,16 +61,6 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Don't have an account? Sign up"
-            android:textStyle="bold"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:textColor="@color/blue"
-            android:id="@+id/txt_signup"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:text="Forgot Password?"
             android:textStyle="bold"
             android:layout_marginTop="10dp"

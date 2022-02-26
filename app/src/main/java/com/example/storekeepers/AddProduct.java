@@ -56,6 +56,7 @@ public class AddProduct extends AppCompatActivity {
     String userid = firebaseUser.getUid();
     DocumentReference docRef = db.collection("Users").document(userid);
     final String randomKey = UUID.randomUUID().toString();
+    final String documentID = UUID.randomUUID().toString();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -134,15 +135,17 @@ public class AddProduct extends AppCompatActivity {
                         product.put("productDetail", str_pDetail);
                         product.put("productImage", downloadUri);
                         product.put("productStatus", productStatus);
+                        product.put("documentID", documentID);
 
-                        db.collection("Products").add(product).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
-                            @Override
-                            public void onComplete(@NonNull @NotNull Task<DocumentReference> task) {
-                                pd.dismiss();
-                                Toast.makeText(AddProduct.this, "Successfully uploaded your product", Toast.LENGTH_SHORT).show();
-                                finish();
-                            }
-                        }).addOnFailureListener(new OnFailureListener() {
+                        db.collection("Products").document(documentID)
+                                .set(product)
+                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                        Toast.makeText(AddProduct.this, "Successfully uploaded your product", Toast.LENGTH_SHORT).show();
+                                        finish();
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
                                 pd.dismiss();

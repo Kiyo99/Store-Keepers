@@ -8,6 +8,7 @@ public class Products {
     String productImage;
     String productDetail;
     String productStatus;
+    String documentID;
 
     public String getProductTitle() {
         return productTitle;
@@ -31,6 +32,10 @@ public class Products {
 
     public String getProductStatus() {
         return productStatus;
+    }
+
+    public String getDocumentID() {
+        return documentID;
     }
 
 }
