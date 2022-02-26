@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "598016168224",
+    "project_id": "store-keepers",
+    "storage_bucket": "store-keepers.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:598016168224:android:0f6c2ea303a0e273ec8745",
+        "android_client_info": {
+          "package_name": "com.example.storekeepers"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "598016168224-74u8o71h1mpe1p5f1lp2bdles8d38k2a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUd_i9weQrDwsbz4XNmuRqgK5D6cgOP8w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "598016168224-74u8o71h1mpe1p5f1lp2bdles8d38k2a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
