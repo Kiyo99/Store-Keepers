@@ -34,6 +34,7 @@ public class DetailedView extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Intent i = new Intent(DetailedView.this, ViewProducts.class);
+        finish();
         startActivity(i);
     }
 

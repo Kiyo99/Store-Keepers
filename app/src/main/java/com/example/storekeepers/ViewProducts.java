@@ -70,6 +70,8 @@ public void onBackPressed() {
                     }
                     else {
                         auth.signOut();
+                        Intent intent = new Intent();
+//                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         System.exit(0);
                     }
 
