@@ -99,6 +99,7 @@ public class Login extends AppCompatActivity {
 
                                                         if (usertype.equalsIgnoreCase("Admin")){
                                                             pd.dismiss();
+//                                                            firebaseUser.sendEmailVerification();
                                                             Intent intent;
                                                             intent = new Intent(Login.this, MainActivity.class);
                                                             startActivity(intent);
@@ -107,6 +108,7 @@ public class Login extends AppCompatActivity {
                                                         }
                                                         else if (usertype.equalsIgnoreCase("Regular")){
                                                             pd.dismiss();
+//                                                            firebaseUser.sendEmailVerification();
                                                             Intent intent;
                                                             intent = new Intent(Login.this, ViewProducts.class);
                                                             startActivity(intent);
@@ -115,6 +117,7 @@ public class Login extends AppCompatActivity {
 
                                                         else if (usertype.equalsIgnoreCase("Customer")){
                                                             pd.dismiss();
+//                                                            firebaseUser.sendEmailVerification();
                                                             Intent intent;
                                                             intent = new Intent(Login.this, ViewProducts.class);
                                                             startActivity(intent);
