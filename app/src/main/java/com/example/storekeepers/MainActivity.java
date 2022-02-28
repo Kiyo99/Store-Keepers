@@ -17,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
         FirebaseAuth auth = FirebaseAuth.getInstance();
         auth.signOut();
+        finish();
+        System.exit(0);
     }
 
     @Override

@@ -70,6 +70,7 @@ public void onBackPressed() {
                     }
                     else {
                         auth.signOut();
+                        System.exit(0);
                     }
 
 

@@ -41,7 +41,7 @@ public class Register extends AppCompatActivity implements AdapterView.OnItemSel
 
     @Override
     public void onBackPressed() {
-        Intent i = new Intent(ProductDestination.this, MainActivity.class);
+        Intent i = new Intent(Register.this, MainActivity.class);
         startActivity(i);
         finish();
     }
