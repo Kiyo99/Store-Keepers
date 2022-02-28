@@ -9,6 +9,7 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -36,65 +37,6 @@ public class Login extends AppCompatActivity {
     TextView txt_forgot;
 
     private FirebaseAuth auth;
-
-    FirebaseUser firebaseUser;
-
-    UserType UT;
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-
-
-//        This redirects if the user isnt null, to make sure the user is always signed in
-        if (firebaseUser!=null){
-
-            Intent intent;
-                    intent = new Intent(Login.this, MainActivity.class);
-                    startActivity(intent);
-                    finish();
-//
-//            UT = new UserType();
-//            String uT = UT.getUserType();
-//
-//            if (uT!=null){
-//                if (uT.equalsIgnoreCase("Admin")){
-//
-//                    Intent intent;
-//                    intent = new Intent(Login.this, MainActivity.class);
-//                    startActivity(intent);
-//                    finish();
-//                }
-//                else if (uT.equalsIgnoreCase("Regular")){
-//
-//                    Intent intent;
-//                    intent = new Intent(Login.this, ViewProducts.class);
-//                    startActivity(intent);
-//                    finish();
-//                }
-//
-//                else if (uT.equalsIgnoreCase("Customer")){
-//
-//                    Intent intent;
-//                    intent = new Intent(Login.this, ViewProducts.class);
-//                    startActivity(intent);
-//                    finish();
-//                }
-            }
-//            else {
-//                Intent intent;
-//                intent = new Intent(Login.this, Login.class);
-//                startActivity(intent);
-//                finish();
-    }
-//        }
-
-//        finish();
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -153,6 +95,8 @@ public class Login extends AppCompatActivity {
                                                         UserType UT = new UserType();
                                                         UT.userType = usertype;
 
+//                                                        auth.sendSignInLinkToEmail(str_email, );
+
                                                         if (usertype.equalsIgnoreCase("Admin")){
                                                             pd.dismiss();
                                                             Intent intent;
@@ -207,6 +151,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 EditText reset = new EditText(view.getContext());
+//                reset.setBackground(R.drawable.edittext_background);
                 AlertDialog.Builder passwordReset = new AlertDialog.Builder(view.getContext());
                 passwordReset.setTitle("Reset Password?");
                 passwordReset.setMessage("Enter your email to receive a rest link");
