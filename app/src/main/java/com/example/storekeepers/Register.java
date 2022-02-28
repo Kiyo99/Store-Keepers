@@ -40,6 +40,13 @@ public class Register extends AppCompatActivity implements AdapterView.OnItemSel
     String usertype;
 
     @Override
+    public void onBackPressed() {
+        Intent i = new Intent(ProductDestination.this, MainActivity.class);
+        startActivity(i);
+        finish();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);

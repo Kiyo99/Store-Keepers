@@ -46,8 +46,44 @@ public class ViewProducts extends AppCompatActivity implements AdapterView.OnIte
 
 @Override
 public void onBackPressed() {
-    Intent i = new Intent(ViewProducts.this, ProductDestination.class);
-    startActivity(i);
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    FirebaseAuth auth = FirebaseAuth.getInstance();
+    FirebaseUser firebaseUser = auth.getCurrentUser();
+    String userid = firebaseUser.getUid();
+    DocumentReference docRef = db.collection("Users").document(userid);
+    docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+        @Override
+        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+            if (task.isSuccessful()) {
+                DocumentSnapshot document = task.getResult();
+                if (document.exists()) {
+                    Log.d(TAG, "DocumentSnapshot data: " + document.getData());
+                    String usertype = document.getString("User Type");
+
+                    if (usertype.equalsIgnoreCase("Admin")){
+                        pd.dismiss();
+                        Intent i = new Intent(ViewProducts.this, ProductDestination.class);
+                        startActivity(i);
+                        finish();
+
+
+                    }
+                    else {
+                        auth.signOut();
+                    }
+
+
+                } else {
+                    pd.dismiss();
+                    Log.d(TAG, "No such document");
+
+                }
+            } else {
+                pd.dismiss();
+                Log.d(TAG, "get failed with ", task.getException());
+            }
+        }
+    });
 }
 
     @Override

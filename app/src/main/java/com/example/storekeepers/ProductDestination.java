@@ -12,7 +12,15 @@ public class ProductDestination extends AppCompatActivity {
     CardView single, bulk, products;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onBackPressed() {
+        Intent i = new Intent(ProductDestination.this, MainActivity.class);
+        startActivity(i);
+        finish();
+    }
+
+
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_products_destination);
 

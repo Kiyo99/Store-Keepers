@@ -7,9 +7,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class MainActivity extends AppCompatActivity {
 
     CardView user, product;
+
+    @Override
+    public void onBackPressed() {
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        auth.signOut();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
