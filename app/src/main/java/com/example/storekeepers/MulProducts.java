@@ -153,6 +153,8 @@ public class MulProducts extends AppCompatActivity {
                             final String randomName = UUID.randomUUID().toString().substring(0,6);
                             final String finalName = str_pTitle + randomName;
 
+                            //Remember to give a possibility for status
+
                             Map<String, Object> product = new HashMap<>();
                             product.put("productTitle", finalName);
                             product.put("productDesc", str_pDesc);

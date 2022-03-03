@@ -3,7 +3,6 @@
     <string-array name="UserType">
         <item>Admin</item>
         <item>Regular</item>
-        <item>Customer</item>
     </string-array>
 
     <string-array name="Status">

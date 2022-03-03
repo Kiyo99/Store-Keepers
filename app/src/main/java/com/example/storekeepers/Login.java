@@ -50,8 +50,6 @@ public class Login extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
 
-        txt_forgot.setVisibility(View.GONE);
-
 
 
         login.setOnClickListener(new View.OnClickListener() {

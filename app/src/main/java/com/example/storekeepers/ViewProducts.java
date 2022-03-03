@@ -44,50 +44,48 @@ public class ViewProducts extends AppCompatActivity implements AdapterView.OnIte
     String usertype;
 //    String problemType;
 
-@Override
-public void onBackPressed() {
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
-    FirebaseAuth auth = FirebaseAuth.getInstance();
-    FirebaseUser firebaseUser = auth.getCurrentUser();
-    String userid = firebaseUser.getUid();
-    DocumentReference docRef = db.collection("Users").document(userid);
-    docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-        @Override
-        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-            if (task.isSuccessful()) {
-                DocumentSnapshot document = task.getResult();
-                if (document.exists()) {
-                    Log.d(TAG, "DocumentSnapshot data: " + document.getData());
-                    String usertype = document.getString("User Type");
+    @Override
+    public void onBackPressed() {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        FirebaseUser firebaseUser = auth.getCurrentUser();
+        String userid = firebaseUser.getUid();
+        DocumentReference docRef = db.collection("Users").document(userid);
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        Log.d(TAG, "DocumentSnapshot data: " + document.getData());
+                        String usertype = document.getString("User Type");
 
-                    if (usertype.equalsIgnoreCase("Admin")){
+                        if (usertype.equalsIgnoreCase("Admin")){
+                            pd.dismiss();
+                            Intent i = new Intent(ViewProducts.this, ProductDestination.class);
+                            startActivity(i);
+                            finish();
+
+
+                        }
+                        else {
+                            auth.signOut();
+                            System.exit(0);
+                        }
+
+
+                    } else {
                         pd.dismiss();
-                        Intent i = new Intent(ViewProducts.this, ProductDestination.class);
-                        startActivity(i);
-                        finish();
-
+                        Log.d(TAG, "No such document");
 
                     }
-                    else {
-                        auth.signOut();
-                        Intent intent = new Intent();
-//                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        System.exit(0);
-                    }
-
-
                 } else {
                     pd.dismiss();
-                    Log.d(TAG, "No such document");
-
+                    Log.d(TAG, "get failed with ", task.getException());
                 }
-            } else {
-                pd.dismiss();
-                Log.d(TAG, "get failed with ", task.getException());
             }
-        }
-    });
-}
+        });
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
